@@ -4,18 +4,22 @@ kind: Deployment
 metadata:
   name: api
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: api
   template:
     metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: /metrics
+        prometheus.io/port: "8080"
       labels:
         app: api
     spec:
       containers:
       - name: api
-        image: llsouzabr/api-produto:v1
+        image: llsouzabr/api-produto:v2
         resources:
           limits:
             memory: "64Mi"
