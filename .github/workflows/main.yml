@@ -32,6 +32,6 @@ jobs:
           file: ./src/Dockerfile
           tags: |
             llsouzabr/api-produto:latest
-            llsouzabr/api-produto::${{ github.run_number }}
-          push: true
+            llsouzabr/api-produto:${{ github.run_number }}
+          push: false
         
