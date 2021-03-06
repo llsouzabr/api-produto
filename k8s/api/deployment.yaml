@@ -1,12 +1,10 @@
 ---
-configMap
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: api
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: api
@@ -20,12 +18,10 @@ spec:
         image: llsouzabr/api-produto:v1
         resources:
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: "64Mi"
+            cpu: "250m"
         ports:
           - containerPort: 8080
         env:
           - name: MONGODB_URI
             value: mongodb://mongouser:mongopwd@mongodb-service:27017/admin
-
-
